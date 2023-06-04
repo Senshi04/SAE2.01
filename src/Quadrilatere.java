@@ -11,7 +11,8 @@ public class Quadrilatere extends Forme {
         this.points = new ArrayList<PointPlan>();
     }
 
-    Quadrilatere(PointPlan p1, PointPlan p2) {
+    Quadrilatere(String nomForme,PointPlan p1, PointPlan p2) {
+        super(nomForme);
         this.points = new ArrayList<PointPlan>();
         this.points.add(p1);
         this.points.add(p2);
@@ -26,6 +27,7 @@ public class Quadrilatere extends Forme {
     }
 
     Quadrilatere(Quadrilatere q) {
+        super(q.getNomForme());
         this.points = new ArrayList<PointPlan>();
         this.points.add(q.getPoint(0));
         this.points.add(q.getPoint(1));
