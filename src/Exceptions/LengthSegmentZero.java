@@ -1,16 +1,15 @@
 package Exceptions;
 
 import ardoise.PointPlan;
+import ardoise.Segment;
 
 public class LengthSegmentZero extends Exception {
-    PointPlan point;
-    public LengthSegmentZero(PointPlan point){
+    public LengthSegmentZero(){
         super();
-        this.point = point;
     }
 
     public String toString(){
-        return "Les points : " + this.point + " forment un segment de longueur 0";
+        return "L'un des segements a sont abscisse égal à son ordonnée";
     }
 
 
