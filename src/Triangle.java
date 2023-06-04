@@ -13,13 +13,15 @@ public class Triangle extends Forme {
     public Triangle(){
         new ArrayList<PointPlan>(3);
     }
-    public Triangle(PointPlan p1, PointPlan p2, PointPlan p3) throws IndexOutOfBoundsException, LengthSegmentZero{
+    public Triangle(String nomForme, PointPlan p1, PointPlan p2, PointPlan p3) throws IndexOutOfBoundsException, LengthSegmentZero{
+        super(nomForme);
         this.points = new ArrayList<PointPlan>(3);
         this.setPoint(0, p1);
         this.setPoint(1, p2);
         this.setPoint(2, p3);
     }
     public Triangle(Triangle t) throws IndexOutOfBoundsException, LengthSegmentZero{
+        super(t.getNomForme);
         this.points = new ArrayList<PointPlan>(3);
         this.setPoint(0, t.getPoint(0));
         this.setPoint(1, t.getPoint(0));
