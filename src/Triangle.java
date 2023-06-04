@@ -21,7 +21,7 @@ public class Triangle extends Forme {
         this.setPoint(2, p3);
     }
     public Triangle(Triangle t) throws IndexOutOfBoundsException, LengthSegmentZero{
-        super(t.getNomForme);
+        super(t.getNomForme());
         this.points = new ArrayList<PointPlan>(3);
         this.setPoint(0, t.getPoint(0));
         this.setPoint(1, t.getPoint(0));

@@ -1,6 +1,8 @@
+import ardoise.Forme;
+import ardoise.PointPlan;
+import ardoise.Segment;
 import java.util.ArrayList;
 
-import javax.swing.text.Segment;
 
 public class Quadrilatere extends Forme {
     private ArrayList<PointPlan> points;
@@ -13,8 +15,8 @@ public class Quadrilatere extends Forme {
         this.points = new ArrayList<PointPlan>();
         this.points.add(p1);
         this.points.add(p2);
-        PointPlan p3 = new PointPlan(p2.getAbcisse(),p1.getOrdonnee());
-        PointPlan p4 = new PointPlan(p1.getAbcisse(),p2.getOrdonnee());
+        PointPlan p3 = new PointPlan(p2.getAbscisse(),p1.getOrdonnee());
+        PointPlan p4 = new PointPlan(p1.getAbscisse(),p2.getOrdonnee());
         this.points.add(p3);
         this.points.add(p4);
     /*  Voici comment les points sont agencés:
@@ -25,10 +27,10 @@ public class Quadrilatere extends Forme {
 
     Quadrilatere(Quadrilatere q) {
         this.points = new ArrayList<PointPlan>();
-        this.points.add(q.get(0));
-        this.points.add(q.get(1));
-        this.points.add(q.get(2));
-        this.points.add(q.get(3));
+        this.points.add(q.getPoint(0));
+        this.points.add(q.getPoint(1));
+        this.points.add(q.getPoint(2));
+        this.points.add(q.getPoint(3));
     }
 
     public void setPoint(int i,PointPlan p) {
