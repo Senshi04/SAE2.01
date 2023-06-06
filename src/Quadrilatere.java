@@ -18,9 +18,7 @@ public class Quadrilatere extends Forme {
     Quadrilatere(String nomForme,PointPlan p1, PointPlan p2) throws Exceptions.LengthSegmentZero, Exceptions.InvalidOrder {
         super(nomForme);
         this.points = new ArrayList<PointPlan>();
-        if(p1.getAbscisse()==p2.getAbscisse() && p1.getOrdonnee()==p2.getOrdonnee())
-            throw new LengthSegmentZero(p1);
-        else if (p1.getOrdonnee()<p2.getOrdonnee() || p2.getAbscisse()<p1.getAbscisse())
+        if (p1.getOrdonnee()>p2.getOrdonnee() || p2.getAbscisse()<p1.getAbscisse())
             throw new InvalidOrder(p1,p2);
         this.points.add(p1);
         this.points.add(p2);
@@ -44,10 +42,15 @@ public class Quadrilatere extends Forme {
     }
 
     public void setPoint(int i,PointPlan p) {
-        this.points.set(i,p);
+        if(i==0 || i==1){
+            this.points.set(i,p);
+            this.points.set(2, new PointPlan(this.points.get(1).getAbscisse(),this.points.get(0).getOrdonnee()));
+            this.points.set(3, new PointPlan(this.points.get(0).getAbscisse(),this.points.get(1).getOrdonnee()));
+        }
     }
 
     public PointPlan getPoint(int i){
+        if(this.points.size()==0) return null;
         return this.points.get(i);
     }
 
