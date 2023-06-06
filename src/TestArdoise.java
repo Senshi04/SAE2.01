@@ -32,10 +32,10 @@ public class TestArdoise {
 
 
 			 */
-
+			/*
 			Maison m = new Maison();
 			ardoise.ajouterForme(m);
-
+			*/
 			/*
 			PointPlan t1 = new PointPlan(50,120);
 			PointPlan t2 = new PointPlan(150, 200);
@@ -50,10 +50,22 @@ public class TestArdoise {
 			ardoise.ajouterForme(c);
 			ardoise.ajouterForme(p);
 			*/
-
+			PointPlan t1 = new PointPlan(50,120);
+			PointPlan t3 = new PointPlan(100, 120);
+			PointPlan t4 = new PointPlan(75, 90);
+			PointPlan t3b = new PointPlan(130, 145);
+			PointPlan t4b = new PointPlan(100, 170);
+			Chapeau c = new Chapeau("Toit", t1,t4,t3);
+			Chapeau c2 = new Chapeau("Toit", t3,t3b,t4b);
+			Chapeau c3 = new Chapeau(c);
+			c3.deplacer(0,50);
+			c3.setPoint(1, new PointPlan(75, 200));
+			ardoise.ajouterForme(c);
+			ardoise.ajouterForme(c3);
+			ardoise.ajouterForme(c2);
 			ardoise.dessinerGraphique();
-			Thread.sleep(5000);// dessun disparait après 5s
-			System.exit(1);
+			//Thread.sleep(5000);// dessin disparait après 5s
+			//System.exit(1);
 		//}catch (InvalidTriangle e){
 			//e.printStackTrace();
 		}catch (Exception e) {

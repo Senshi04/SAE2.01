@@ -22,9 +22,13 @@ public class Chapeau extends Forme {
 	}
 	public Chapeau(Chapeau c) {
 		super(c.getNomForme());
-		this.points.add(c.getPoint(0));
-		this.points.add(c.getPoint(1));
-		this.points.add(c.getPoint(2));
+		this.points = new ArrayList<PointPlan>();
+		PointPlan p1 = new PointPlan(c.getPoint(0).getAbscisse(),c.getPoint(0).getOrdonnee());
+		PointPlan p2 = new PointPlan(c.getPoint(1).getAbscisse(),c.getPoint(1).getOrdonnee());
+		PointPlan p3 = new PointPlan(c.getPoint(2).getAbscisse(),c.getPoint(2).getOrdonnee());
+		this.points.add(p1);
+		this.points.add(p2);
+		this.points.add(p3);
 	}
 	
 	public PointPlan getPoint(int index) {
@@ -34,23 +38,17 @@ public class Chapeau extends Forme {
 	public void setPoint(int index, PointPlan p) {
 		this.points.set(index,p);
 	}
-	
-	@Override
+
 	public void deplacer(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-		this.points.get(0).setAbscisse(arg0);
-		this.points.get(0).setOrdonnee(arg1);
+		this.points.get(0).deplacer(arg0, arg1);
 		
-		this.points.get(1).setAbscisse(arg0);
-		this.points.get(1).setOrdonnee(arg1);
+		this.points.get(1).deplacer(arg0,arg1);
 		
-		this.points.get(2).setAbscisse(arg0);
-		this.points.get(2).setOrdonnee(arg1);
-		
+		this.points.get(2).deplacer(arg0,arg1);
 		
 	}
 
-	@Override
+
 	public ArrayList<Segment> dessiner() {
 		ArrayList<Segment> s = new ArrayList<Segment>(2);
 		s.add(new Segment(this.points.get(0),this.points.get(1)));
@@ -58,7 +56,7 @@ public class Chapeau extends Forme {
 		return s;
 	}
 
-	@Override
+
 	public String typeForme() {
 		return "C";
 	}
