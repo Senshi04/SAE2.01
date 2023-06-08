@@ -1,11 +1,8 @@
 import Exceptions.InvalidOrder;
-import Exceptions.LengthSegmentZero;
 import ardoise.Forme;
 import ardoise.PointPlan;
 import ardoise.Segment;
 import java.util.ArrayList;
-import Exceptions.LengthSegmentZero;
-import Exceptions.InvalidOrder;
 
 
 public class Quadrilatere extends Forme {
@@ -15,7 +12,7 @@ public class Quadrilatere extends Forme {
         this.points = new ArrayList<PointPlan>();
     }
 
-    Quadrilatere(String nomForme,PointPlan p1, PointPlan p2) throws Exceptions.LengthSegmentZero, Exceptions.InvalidOrder {
+    Quadrilatere(String nomForme,PointPlan p1, PointPlan p2) throws Exceptions.InvalidOrder {
         super(nomForme);
         this.points = new ArrayList<PointPlan>();
         if (p1.getOrdonnee()>p2.getOrdonnee() || p2.getAbscisse()<p1.getAbscisse())

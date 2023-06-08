@@ -9,7 +9,7 @@ public class LengthSegmentZero extends Exception {
     }
 
     public String toString(){
-        return "L'un des segements a sont abscisse égal à son ordonnée";
+        return "Un ou plusieurs points sont égaux";
     }
 
 

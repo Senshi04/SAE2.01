@@ -1,4 +1,3 @@
-import Exceptions.InvalidTriangle;
 import Exceptions.LengthSegmentZero;
 import ardoise.*;
 
@@ -49,7 +48,7 @@ public class TestArdoise {
 			ardoise.ajouterForme(q);
 			ardoise.ajouterForme(c);
 			ardoise.ajouterForme(p);
-			*/
+			*//*
 			PointPlan t1 = new PointPlan(50,120);
 			PointPlan t3 = new PointPlan(100, 120);
 			PointPlan t4 = new PointPlan(75, 90);
@@ -64,10 +63,9 @@ public class TestArdoise {
 			ardoise.ajouterForme(c3);
 			ardoise.ajouterForme(c2);
 			ardoise.dessinerGraphique();
+			*/
 			//Thread.sleep(5000);// dessin disparait après 5s
 			//System.exit(1);
-		//}catch (InvalidTriangle e){
-			//e.printStackTrace();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
