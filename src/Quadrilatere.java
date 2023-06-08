@@ -35,10 +35,14 @@ public class Quadrilatere extends Forme {
     Quadrilatere(Quadrilatere q) {
         super(q.getNomForme());
         this.points = new ArrayList<PointPlan>();
-        this.points.add(q.getPoint(0));
-        this.points.add(q.getPoint(1));
-        this.points.add(q.getPoint(2));
-        this.points.add(q.getPoint(3));
+        PointPlan p1 = new PointPlan(q.getPoint(0).getAbscisse(),q.getPoint(0).getOrdonnee());
+        PointPlan p2 = new PointPlan(q.getPoint(1).getAbscisse(),q.getPoint(1).getOrdonnee());
+        PointPlan p3 = new PointPlan(q.getPoint(2).getAbscisse(),q.getPoint(2).getOrdonnee());
+        PointPlan p4 = new PointPlan(q.getPoint(3).getAbscisse(),q.getPoint(3).getOrdonnee());
+        this.points.add(p1);
+        this.points.add(p2);
+        this.points.add(p3);
+        this.points.add(p4);
     }
 
     public void setPoint(int i,PointPlan p) {

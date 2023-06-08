@@ -28,9 +28,12 @@ public class Triangle extends Forme {
     public Triangle(Triangle t) throws InvalidTriangle {
         super(t.getNomForme());
         this.points = new ArrayList<PointPlan>(3);
-        this.points.add(t.getPoint(0));
-        this.points.add(t.getPoint(1));
-        this.points.add(t.getPoint(2));
+        PointPlan p1 = new PointPlan(t.getPoint(0).getAbscisse(), t.getPoint(0).getOrdonnee());
+        PointPlan p2 = new PointPlan(t.getPoint(1).getAbscisse(), t.getPoint(1).getOrdonnee());
+        PointPlan p3 = new PointPlan(t.getPoint(2).getAbscisse(), t.getPoint(2).getOrdonnee());
+        this.points.add(p1);
+        this.points.add(p2);
+        this.points.add(p3);
         if(this.dessiner()==null) {
             this.points.removeAll(this.points);
             throw new InvalidTriangle();
