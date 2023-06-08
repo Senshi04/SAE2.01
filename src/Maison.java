@@ -24,20 +24,24 @@ public class Maison extends Forme{
         Scanner sc = new Scanner(System.in);
         System.out.println("Entrez la position de la Maison : ");
         int positionMaison = sc.nextInt();
-        System.out.println("Entrez la largeur de la Maison : ");
-        int largeurMaison = sc.nextInt();
-        System.out.println("Entrez la hauteur de la Maison : ");
-        int hauteurMaison = 200 - sc.nextInt();
-        System.out.println("Entrez la hauteur du toit : ");
-        int hauteurToit = hauteurMaison - sc.nextInt();
-
+        int largeurMaison = 0;
+        int hauteurMaison = 0;
+        int hauteurToit = 0;
+        while(largeurMaison <= 20 || hauteurMaison <= 30 || hauteurToit < 0) {
+            System.out.println("Respectez ces conditions :\n-Hauteur maison > 30 \n-Largeur maison < 20\n-Hauteur toit > 0");
+            System.out.println("Entrez la largeur de la Maison : ");
+            largeurMaison = sc.nextInt();
+            System.out.println("Entrez la hauteur de la Maison : ");
+            hauteurMaison = 200 - sc.nextInt();
+            System.out.println("Entrez la hauteur du toit : ");
+            hauteurToit = hauteurMaison - sc.nextInt();
+        }
         int milieuMaison = positionMaison + (largeurMaison/2);
 
         PointPlan coteHautGauche = new PointPlan(positionMaison, hauteurMaison);
-        this.corps = new Quadrilatere("Corps",coteHautGauche,new PointPlan(positionMaison + largeurMaison,200));
-        System.out.println(this.corps);
+        this.corps = new Quadrilatere("Corps",coteHautGauche, new PointPlan(positionMaison + largeurMaison,200));
+        //Les paramètres 2 et 4 du toit sont les références des côtés supérieur du corps de la maison, ainsi le toit sera toujours sur la maison
         this.toit = new Chapeau("Toit",coteHautGauche, new PointPlan(milieuMaison,hauteurToit), this.corps.getPoint(2));
-        System.out.println(this.toit.dessiner());
 
         PointPlan p1 = new PointPlan(milieuMaison-10,170);
         PointPlan p2 = new PointPlan(milieuMaison+10,200);
@@ -68,8 +72,11 @@ public class Maison extends Forme{
         return seg;
     }
 
-    public void deplacer(int i, int i1) {
-
+    public void deplacer(int dx, int dy) {
+        this.corps.deplacer(dx,dy);
+        this.porte.deplacer(dx,dy);
+        //Pour le toit on deplace que le sommet du toit car les autres points font référence aux coins supérieurs de la maison, ils se deplacent avec le corps.
+        this.toit.getPoint(1).deplacer(dx,dy);
     }
 
     public String typeForme() {

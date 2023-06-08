@@ -1,22 +1,29 @@
 import Exceptions.LengthSegmentZero;
 import ardoise.*;
-
 import java.awt.*;
 import java.util.Calendar;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class TestArdoise {
-	public static void main(String []args) {
-		Ardoise ardoise = new Ardoise();
-		PointPlan p1 = new PointPlan(50,100);
-		PointPlan p2 = new PointPlan(1,50);
-		PointPlan p3 = new PointPlan(100,25);
-		//porte :
-		PointPlan p4 = new PointPlan(50,200);
-		PointPlan p5 = new PointPlan(70,170);
+    public static void main(String[] args) {
+        Ardoise ardoise = new Ardoise();
+        PointPlan p1 = new PointPlan(50, 100);
+        PointPlan p2 = new PointPlan(1, 50);
+        PointPlan p3 = new PointPlan(100, 25);
+        //porte :
+        PointPlan p4 = new PointPlan(50, 200);
+        PointPlan p5 = new PointPlan(70, 170);
+        PointPlan p6 = new PointPlan(50, 100); //Même valeur que p1 pour tester l'exception LengthSegmentZero
 
-		try {
+
+        try {
+            //Test des exceptions sur la classe Triangle :
+            //Triangle t0 = new Triangle("Test Exception Length...",p1,p2,p6);
+            //Triangle t = new Triangle("Jsp", p1,p2,p3);
+            //System.out.println(t);
+            //t.setPoint(1,p6);
+            //System.out.println(t);
 			/*
-			Triangle t = new Triangle("Jsp", p1,p2,p3);
 			Quadrilatere q = new Quadrilatere("Porte", p4, p5);
 			ardoise.ajouterForme(q);
 			ardoise.dessinerGraphique();
@@ -31,17 +38,9 @@ public class TestArdoise {
 
 
 			 */
+            Maison m = new Maison();
+            ardoise.ajouterForme(m);
 			/*
-			Maison m = new Maison();
-			ardoise.ajouterForme(m);
-			*/
-			/*
-			PointPlan t1 = new PointPlan(50,120);
-			PointPlan t2 = new PointPlan(150, 200);
-			Quadrilatere q = new Quadrilatere("Corps", t1,t2);
-			PointPlan t3 = new PointPlan(150, 120);
-			PointPlan t4 = new PointPlan(100, 100);
-			Chapeau c = new Chapeau("Toit", t1,t4,t3);
 			PointPlan t5 = new PointPlan(75,160);
 			PointPlan t6 = new PointPlan(125, 200);
 			Quadrilatere p = new Quadrilatere("Porte", t5,t6);
@@ -62,12 +61,33 @@ public class TestArdoise {
 			ardoise.ajouterForme(c);
 			ardoise.ajouterForme(c3);
 			ardoise.ajouterForme(c2);
-			ardoise.dessinerGraphique();
 			*/
-			//Thread.sleep(5000);// dessin disparait après 5s
-			//System.exit(1);
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+			/*
+			ardoise.dessinerGraphique();
+
+
+			 */
+            //Thread.sleep(10000);
+            //System.exit(1);
+			/*
+			PointPlan t1 = new PointPlan(50,120);
+			PointPlan t2 = new PointPlan(150, 200);
+			Quadrilatere q = new Quadrilatere("Corps", t1,t2);
+			ardoise.ajouterForme(q);
+			ardoise.dessinerGraphique();
+			Thread.sleep(5000);
+			q.deplacer(10,0);
+
+			 */
+            ardoise.dessinerGraphique();
+            for (int i = 0; i < 15; i++) {
+                Thread.sleep(20);// dessin disparait après 5s
+                m.deplacer(10, 0);
+                ardoise.dessinerGraphique();
+            }
+            System.exit(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
