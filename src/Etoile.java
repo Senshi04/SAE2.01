@@ -18,7 +18,7 @@ public class Etoile extends Forme {
 	 * @param chap1 : Chapeau origine qui va servir de modèle pour les autres et construire une étoile
 	 * @throws InvalidDistanceChapeau : Exception dans le cas où le chapeau n'est pas isocèle
 	 */
-	public Etoile(String nom, Chapeau chap1) throws InvalidDistanceChapeau{
+	public Etoile(String nom, Chapeau chap1) throws InvalidDistanceChapeau, InvalidAbs, InvalidOrd{
 		super(nom);
 		// TODO Auto-generated constructor stub
 		this.pts_etoile = new ArrayList<Chapeau>(4);
@@ -31,6 +31,18 @@ public class Etoile extends Forme {
 		int e = ch.getPoint(2).getAbscisse();
 		int f = ch.getPoint(2).getOrdonnee();
 		
+		if(!(d<b)) {
+			System.out.println("Ordonnée b = "+ b);
+			System.out.println("Ordonnée d = "+ d);
+			System.out.println("Ordonnée f = "+ f);
+			throw new InvalidOrd();
+		}
+		if(!(a<c)) {
+			System.out.println("Abscisse a = "+ a);
+			System.out.println("Abscisse c = "+ c);
+			System.out.println("Abscisse e = "+ e);
+			throw new InvalidAbs();
+		}
 		PointPlan pLeft = new PointPlan(e,f);
 		PointPlan pTop = new PointPlan(e+(f-d),f+(e-c));
 		PointPlan pRight = new PointPlan(e,f+(e-a));
@@ -112,7 +124,7 @@ public class Etoile extends Forme {
 	@Override
 	public String typeForme() {
 		// TODO Auto-generated method stub
-		return "CF";
+		return "GF";
 	}
 	
 	public String toString() {

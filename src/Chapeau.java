@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-import Exceptions.InvalidDistanceChapeau;
 import ardoise.Forme;
 import ardoise.PointPlan;
 import ardoise.Segment;
@@ -13,7 +12,7 @@ public class Chapeau extends Forme {
 	}
 	
 
-	public Chapeau(String arg0,PointPlan p1, PointPlan p2, PointPlan p3) throws InvalidDistanceChapeau {
+	public Chapeau(String arg0,PointPlan p1, PointPlan p2, PointPlan p3) throws  InvalidDistanceChapeau {
 		super(arg0);
 		// TODO Auto-generated constructor stub
 
@@ -23,20 +22,22 @@ public class Chapeau extends Forme {
 		int d = p2.getOrdonnee();
 		int e = p3.getAbscisse();
 		int f = p3.getOrdonnee();
-
+		
 		if(b==f){
-			if(!(d<b && ((c-a)==(e-c) || (c-e)==(a-c)))) {
-				System.out.println("d<b && ((c-a)==(e-c))");
+			if(!((c-a)==(e-c) || (c-e)==(a-c))){
+				System.out.println("c-a == e-c ="+ ((c-a)==(e-c)));
+				System.out.println("c-e == a-c ="+ ((c-e)==(a-c)));
 				throw new InvalidDistanceChapeau();
 			}
 		}
 		if(a==e) {
-			if(!(a<c && ((c-e)==(a-e)||(a-c)==(e-c)))) {
-				System.out.println("a<c && ((c-e)==(a-e)||(a-c)==(e-c))");
+			if(!((c-e)==(a-e)||(a-c)==(e-c))) {
+				System.out.println("c-e == a-e ="+ ((c-e)==(a-e)));
+				System.out.println("a-c == e-c ="+ ((a-c)==(e-c)));
 				throw new InvalidDistanceChapeau();
 			}
 		}
-
+		
 		this.points = new ArrayList<PointPlan>(3);
 		this.points.add(p1);
 		this.points.add(p2);
@@ -85,12 +86,7 @@ public class Chapeau extends Forme {
 	}
 	
 	public String toString() {
-		if (this.points.size() == 0) return "Aucun point du chapeau n'existe, sorry";
-		String msg = "";
-		for (int i = 0; i < 2; i++) {
-			msg += "Côté " + (i + 1) + ": " + this.dessiner().get(i) + "\n";
-		}
-		return msg;
+		return "Le chapeau est compos� 3 points :\nPoint 1 :"+ this.points.get(0) + "\nPoint 2 :" + this.points.get(1) + "\nPoint 3:" + this.points.get(2);
 	}
 
 }
