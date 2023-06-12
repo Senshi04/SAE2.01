@@ -43,7 +43,7 @@ public class Quadrilatere extends Forme {
         if(this.points.size() == 0) return "Aucun point du quadrilatere n'existe, sorry";
         String msg = "";
         for(int i=0; i<4; i++){
-            msg+= "Point " + (i+1) + " de coordonées: " + this.points.get(i) + "\n";
+            msg+= "Segment " + (i+1) + " de coordonées: " + this.dessiner().get(i) + "\n";
         }
         return msg;
     }
