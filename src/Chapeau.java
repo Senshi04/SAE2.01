@@ -23,20 +23,22 @@ public class Chapeau extends Forme {
 		int d = p2.getOrdonnee();
 		int e = p3.getAbscisse();
 		int f = p3.getOrdonnee();
-
+		
 		if(b==f){
-			if(!((c-a)==(e-c) || (c-e)==(a-c))) {
-				System.out.println("d<b && ((c-a)==(e-c))");
+			if(!((c-a)==(e-c) || (c-e)==(a-c))){
+				System.out.println("c-a == e-c ="+ ((c-a)==(e-c)));
+				System.out.println("c-e == a-c ="+ ((c-e)==(a-c)));
 				throw new InvalidDistanceChapeau();
 			}
 		}
 		if(a==e) {
-			if(!((c-e)==(a-e)||(a-c)==(e-c))){
-				System.out.println("a<c && ((c-e)==(a-e)||(a-c)==(e-c))");
+			if(!((c-e)==(a-e)||(a-c)==(e-c))) {
+				System.out.println("c-e == a-e ="+ ((c-e)==(a-e)));
+				System.out.println("a-c == e-c ="+ ((a-c)==(e-c)));
 				throw new InvalidDistanceChapeau();
 			}
 		}
-
+		
 		this.points = new ArrayList<PointPlan>(3);
 		this.points.add(p1);
 		this.points.add(p2);
