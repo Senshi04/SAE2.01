@@ -38,8 +38,10 @@ public class TestArdoise {
 
 
 			 */
+
             Maison m = new Maison();
             ardoise.ajouterForme(m);
+            System.out.println(m);
 			/*
 			PointPlan t5 = new PointPlan(75,160);
 			PointPlan t6 = new PointPlan(125, 200);
@@ -62,30 +64,33 @@ public class TestArdoise {
 			ardoise.ajouterForme(c3);
 			ardoise.ajouterForme(c2);
 			*/
-			/*
-			ardoise.dessinerGraphique();
-
-
-			 */
             //Thread.sleep(10000);
             //System.exit(1);
 			/*
-			PointPlan t1 = new PointPlan(50,120);
-			PointPlan t2 = new PointPlan(150, 200);
-			Quadrilatere q = new Quadrilatere("Corps", t1,t2);
-			ardoise.ajouterForme(q);
 			ardoise.dessinerGraphique();
 			Thread.sleep(5000);
 			q.deplacer(10,0);
 
 			 */
-            ardoise.dessinerGraphique();
+            //ardoise.dessinerGraphique();
+            /*
             for (int i = 0; i < 15; i++) {
                 Thread.sleep(20);// dessin disparait après 5s
                 m.deplacer(10, 0);
                 ardoise.dessinerGraphique();
             }
-            System.exit(0);
+
+             *//*
+            PointPlan t1 = new PointPlan(50,120);
+			PointPlan t2 = new PointPlan(150, 200);
+			Quadrilatere q = new Quadrilatere("Corps", t1,t2);
+            System.out.println(q);
+            q.setPoint(0, new PointPlan(160,20));
+            System.out.println(q);
+            ardoise.ajouterForme(q);
+            */
+
+            //System.exit(0);
         } catch (Exception e) {
             e.printStackTrace();
         }

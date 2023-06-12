@@ -10,7 +10,7 @@ public class Etoile extends Forme {
 		this.pts_etoile = new ArrayList<Chapeau>(4);
 	}
 
-	public Etoile(String arg0, Chapeau chap1) throws InvalidAbs, InvalidOrd, InvalidDistanceChapeau{
+	public Etoile(String arg0, Chapeau chap1) /*throws InvalidDistanceChapeau*/{
 		super(arg0);
 		// TODO Auto-generated constructor stub
 		this.pts_etoile = new ArrayList<Chapeau>(4);
@@ -26,11 +26,11 @@ public class Etoile extends Forme {
 		PointPlan pLeft = new PointPlan(e,f);
 		PointPlan pTop = new PointPlan(e+(e-a),f+(e-c));
 		PointPlan pRight = new PointPlan(e,f+(f-d));
-		
+		/*
 		Chapeau c2 = new Chapeau("c-right",pLeft,pTop,pRight);
 		Chapeau c3 = new Chapeau(chap1,"c-bottom");
 		Chapeau c4 = new Chapeau(c2,"c-left");
-		
+
 		c3.deplacer(0,e-a);
 		c3.setPoint(1,new PointPlan(c, f+2*(f-d)));		
 		
@@ -40,7 +40,7 @@ public class Etoile extends Forme {
 		this.pts_etoile.add(chap1);
 		this.pts_etoile.add(c2);
 		this.pts_etoile.add(c3);
-		this.pts_etoile.add(c4);
+		this.pts_etoile.add(c4);*/
 	}
 
 	@Override

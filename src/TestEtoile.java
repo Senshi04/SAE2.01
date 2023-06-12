@@ -2,7 +2,7 @@ import ardoise.*;
 
 public class TestEtoile {
 
-	public static void main(String[] args) throws InvalidAbs, InvalidOrd, InvalidDistanceChapeau {
+	public static void main(String[] args) /*throws InvalidDistanceChapeau*/ {
 		// TODO Auto-generated method stub
 
 		PointPlan t1 = new PointPlan(50,30);
@@ -33,7 +33,7 @@ public class TestEtoile {
 //		c4.deplacer(-(e-a),0);
 //		c4.setPoint(1, new PointPlan(a-(e-a),pTop.getOrdonnee()));
 //		
-		Etoile e = new Etoile("Test étoile",chap1);
+		Etoile e = new Etoile("Test ï¿½toile",chap1);
 
 		Ardoise ardoise = new Ardoise();
 		ardoise.ajouterForme(ch);

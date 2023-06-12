@@ -9,10 +9,21 @@ import java.util.List;
 public class Triangle extends Forme {
     private ArrayList<PointPlan> points;
 
+    /**
+     * Constructeur par défaut qui initialise la collection points
+     */
     public Triangle() {
         new ArrayList<PointPlan>(3);
     }
 
+    /**
+     * Constructeur champ à champ
+     * @param nomForme
+     * @param p1
+     * @param p2
+     * @param p3
+     * @throws LengthSegmentZero : verifie que les coordonnées des Points sont toutes différentes
+     */
     public Triangle(String nomForme, PointPlan p1, PointPlan p2, PointPlan p3) throws LengthSegmentZero {
         super(nomForme);
         if ((p1.getAbscisse() == p2.getAbscisse() && p1.getOrdonnee() == p2.getOrdonnee())
@@ -25,6 +36,11 @@ public class Triangle extends Forme {
         this.points.add(p3);
     }
 
+    /**
+     * Constructeur par copie
+     * Création de 3 PointPlan en donnant la valeur des abscisses et ordonnées des 3 du Triangle t
+     * @param t
+     */
     public Triangle(Triangle t) {
         super(t.getNomForme());
         this.points = new ArrayList<PointPlan>(3);
@@ -36,16 +52,26 @@ public class Triangle extends Forme {
         this.points.add(p3);
     }
 
+    /**
+     * Retourne le PointPlan se trouvant à l'indice index
+     * @param index
+     * @return
+     */
     public PointPlan getPoint(int index) {
         return this.points.get(index);
     }
 
+    /**
+     * Modifie le PointPlan de d'indice index par le PointPlan p
+     * @param index
+     * @param p
+     * @throws LengthSegmentZero : entre dans la condition où index == n (avec n = 0, 1 ou 2) et vérifie que les coordonnées de p != coordonnées d'un autre PointPlan
+     */
     public void setPoint(int index, PointPlan p) throws LengthSegmentZero {
         PointPlan p0 = this.getPoint(0);
         PointPlan p1 = this.getPoint(1);
         PointPlan p2 = this.getPoint(2);
-        //Exception si le point en param a les mêmes coordonnées que les autres points
-        //Vérification pour chaque possibilité d'indice en entrée
+
         if ((index == 0) && (
                 (p.getAbscisse() == p1.getAbscisse() && p.getOrdonnee() == p1.getOrdonnee())
                         || (p.getAbscisse() == p2.getAbscisse() && p.getOrdonnee() == p2.getOrdonnee())
@@ -62,6 +88,10 @@ public class Triangle extends Forme {
         this.points.set(index, p);
     }
 
+    /**
+     * Retoure une collection de segments pour dessiner le triangle
+     * @return ArrayList<Segment>
+     */
     public ArrayList<ardoise.Segment> dessiner() {
         if (this.points.size() == 0) return null;
         Segment segment1 = new Segment(this.getPoint(0), this.getPoint(1));
@@ -70,23 +100,38 @@ public class Triangle extends Forme {
         return new ArrayList<Segment>(List.of(segment1, segment2, segment3));
     }
 
+    /**
+     * Deplace chaque PointPlan
+     * @param x
+     * @param y
+     */
     public void deplacer(int x, int y) {
         this.points.get(0).deplacer(x, y);
         this.points.get(1).deplacer(x, y);
         this.points.get(2).deplacer(x, y);
     }
 
+    /**
+     * Renvoie le type de la forme: T
+     * @return String
+     */
     public String typeForme() {
         return "T";
     }
 
+    /**
+     * Décrit le triangle en renvoyant les coordonnées de ses Points
+     * S'il n'existe pas de Triangle elle revoie une phrase adéquate à la situation
+     * @return String
+     */
     public String toString() {
         if (this.points.size() == 0) return "Aucun point du triangle n'existe, sorry";
         String msg = "";
         for (int i = 0; i < 3; i++) {
-            msg += "Point " + (i + 1) + " de coordonées: " + this.points.get(i) + "\n";
+            msg += "Côté " + (i + 1) + ": " + this.dessiner().get(i) + "\n";
         }
         return msg;
     }
 }
+
 
