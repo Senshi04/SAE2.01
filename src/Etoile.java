@@ -10,7 +10,7 @@ public class Etoile extends Forme {
 		this.pts_etoile = new ArrayList<Chapeau>(4);
 	}
 
-	public Etoile(String arg0, Chapeau chap1) /*throws InvalidDistanceChapeau*/{
+	public Etoile(String arg0, Chapeau chap1) throws InvalidDistanceChapeau{
 		super(arg0);
 		// TODO Auto-generated constructor stub
 		this.pts_etoile = new ArrayList<Chapeau>(4);
@@ -24,25 +24,39 @@ public class Etoile extends Forme {
 		int f = ch.getPoint(2).getOrdonnee();
 		
 		PointPlan pLeft = new PointPlan(e,f);
-		PointPlan pTop = new PointPlan(e+(e-a),f+(e-c));
-		PointPlan pRight = new PointPlan(e,f+(f-d));
-		/*
+		PointPlan pTop = new PointPlan(e+(f-d),f+(e-c));
+		PointPlan pRight = new PointPlan(e,f+(e-a));
+		
 		Chapeau c2 = new Chapeau("c-right",pLeft,pTop,pRight);
-		Chapeau c3 = new Chapeau(chap1,"c-bottom");
-		Chapeau c4 = new Chapeau(c2,"c-left");
-
+		Chapeau c3 = new Chapeau("c-bottom",chap1);
+		Chapeau c4 = new Chapeau("c-left",c2);
+		
 		c3.deplacer(0,e-a);
-		c3.setPoint(1,new PointPlan(c, f+2*(f-d)));		
+		c3.setPoint(1,new PointPlan(c, pRight.getOrdonnee()+(f-d)));
 		
 		c4.deplacer(-(e-a),0);
-		c4.setPoint(1, new PointPlan(a-(e-a),pTop.getOrdonnee()));
+		c4.setPoint(1, new PointPlan(a-(f-d),pTop.getOrdonnee()));
 		
 		this.pts_etoile.add(chap1);
 		this.pts_etoile.add(c2);
 		this.pts_etoile.add(c3);
-		this.pts_etoile.add(c4);*/
+		this.pts_etoile.add(c4);
 	}
 
+	public Etoile(Etoile e) {
+		this.pts_etoile.set(0,e.getChapeau(0));
+		this.pts_etoile.set(1,e.getChapeau(1));
+		this.pts_etoile.set(2,e.getChapeau(2));
+		this.pts_etoile.set(3,e.getChapeau(3));
+	}
+
+	public Chapeau getChapeau(int index) {
+		return this.pts_etoile.get(index);
+	}
+
+	public void setChapeau(int index, Chapeau c) {
+		this.pts_etoile.set(index, c);
+	}
 	@Override
 	public void deplacer(int arg0, int arg1) {
 		// TODO Auto-generated method stub
@@ -69,6 +83,10 @@ public class Etoile extends Forme {
 	public String typeForme() {
 		// TODO Auto-generated method stub
 		return "CF";
+	}
+
+	public String toString() {
+		return "L'�toile est compos�e de 4 chapeaux :\n Chapeau 1 :"+ this.pts_etoile.get(0).toString() + "\n Chapeau 2 :"+ this.pts_etoile.get(1).toString() + "\n Chapeau 3 :" + this.pts_etoile.get(2).toString() + "\n Chapeau 4 :"+ this.pts_etoile.get(3).toString();
 	}
 
 }
