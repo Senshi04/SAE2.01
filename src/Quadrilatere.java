@@ -40,7 +40,12 @@ public class Quadrilatere extends Forme {
     }
 
     public String toString() {
-        return this.dessiner().toString();
+        if(this.points.size() == 0) return "Aucun point du quadrilatere n'existe, sorry";
+        String msg = "";
+        for(int i=0; i<4; i++){
+            msg+= "Point " + (i+1) + " de coordonées: " + this.points.get(i) + "\n";
+        }
+        return msg;
     }
 
     public ArrayList<Segment> dessiner(){
