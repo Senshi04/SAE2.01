@@ -43,8 +43,12 @@ public class Quadrilatere extends Forme {
         this.points.add(p4);
     }
 
-    public void setPoint(int i, PointPlan p) {
+    public void setPoint(int i, PointPlan p) throws InvalidOrder {
         if (i == 0 || i == 1) {
+            if (i==0 && p.getOrdonnee() <= this.points.get(1).getOrdonnee())
+                throw new InvalidOrder(this.points.get(1), p);
+            if (i==1 && p.getAbscisse() <= this.points.get(0).getAbscisse())
+                throw new InvalidOrder(this.points.get(0), p);
             this.points.set(i, p);
             this.points.set(2, new PointPlan(this.points.get(1).getAbscisse(), this.points.get(0).getOrdonnee()));
             this.points.set(3, new PointPlan(this.points.get(0).getAbscisse(), this.points.get(1).getOrdonnee()));
