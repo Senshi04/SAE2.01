@@ -10,7 +10,7 @@ public class Etoile extends Forme {
 		this.pts_etoile = new ArrayList<Chapeau>(4);
 	}
 
-	public Etoile(String arg0, Chapeau chap1) {
+	public Etoile(String arg0, Chapeau chap1) throws InvalidAbs, InvalidOrd, InvalidDistanceChapeau{
 		super(arg0);
 		// TODO Auto-generated constructor stub
 		this.pts_etoile = new ArrayList<Chapeau>(4);
@@ -24,17 +24,18 @@ public class Etoile extends Forme {
 		int f = ch.getPoint(2).getOrdonnee();
 		
 		PointPlan pLeft = new PointPlan(e,f);
-		PointPlan pTop = new PointPlan(e+(b-d),(e-a)/2+e);
-		PointPlan pRight = new PointPlan(e,f+(e-a));
+		PointPlan pTop = new PointPlan(e+(e-a),f+(e-c));
+		PointPlan pRight = new PointPlan(e,f+(f-d));
 		
 		Chapeau c2 = new Chapeau("c-right",pLeft,pTop,pRight);
 		Chapeau c3 = new Chapeau(chap1,"c-bottom");
-		c3.deplacer(0,e-a);
-		c3.setPoint(1,new PointPlan(c, b+(2*(d-b)+(e-a))));
-		
 		Chapeau c4 = new Chapeau(c2,"c-left");
+		
+		c3.deplacer(0,e-a);
+		c3.setPoint(1,new PointPlan(c, f+2*(f-d)));		
+		
 		c4.deplacer(-(e-a),0);
-		c4.setPoint(1, new PointPlan(c,c2.getPoint(1).getAbscisse()-(2*(d-b)+(e-a))));
+		c4.setPoint(1, new PointPlan(a-(e-a),pTop.getOrdonnee()));
 		
 		this.pts_etoile.add(chap1);
 		this.pts_etoile.add(c2);
@@ -46,18 +47,28 @@ public class Etoile extends Forme {
 	public void deplacer(int arg0, int arg1) {
 		// TODO Auto-generated method stub
 
+		this.pts_etoile.get(0).deplacer(arg0, arg1);
+		this.pts_etoile.get(1).deplacer(arg0, arg1);
+		this.pts_etoile.get(2).deplacer(arg0, arg1);
+		this.pts_etoile.get(3).deplacer(arg0, arg1);
 	}
 
 	@Override
 	public ArrayList<Segment> dessiner() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Segment> s = new ArrayList<Segment>(8);
+		for(int i=0;i<this.pts_etoile.size();i++) {
+			ArrayList<Segment> sPt = this.pts_etoile.get(i).dessiner();
+			s.add(sPt.get(0));
+			s.add(sPt.get(1));
+		}
+		return s;
 	}
 
 	@Override
 	public String typeForme() {
 		// TODO Auto-generated method stub
-		return null;
+		return "CF";
 	}
 
 }
