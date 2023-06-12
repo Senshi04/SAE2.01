@@ -1,3 +1,4 @@
+import Exceptions.InvalidDistanceChapeau;
 import Exceptions.InvalidOrder;
 import Exceptions.LengthSegmentZero;
 import ardoise.Forme;
@@ -17,9 +18,9 @@ public class Maison extends Forme{
      * Constructeur champ à champ indirectement
      * Créée la maison dynamiquement avec des input
      * @throws InvalidOrder : Exception pour les formes Quadrilatères
-     * @throws LengthSegmentZero : Exception pour toutes les formes
+     * @throws InvalidDistanceChapeau : Exception pour la forme Chapeau
      */
-    public Maison() throws InvalidOrder, LengthSegmentZero {
+    public Maison() throws InvalidOrder, InvalidDistanceChapeau {
         this.init();
     }
 
@@ -28,7 +29,7 @@ public class Maison extends Forme{
      * On copie les PointPlan de chaque composant
      * @param m
      */
-    public Maison(Maison m) throws InvalidOrder {
+    public Maison(Maison m) throws InvalidOrder, InvalidDistanceChapeau {
         PointPlan c1 = new PointPlan(m.getCorps().getPoint(0).getAbscisse(), m.getCorps().getPoint(0).getOrdonnee());
         PointPlan c2 = new PointPlan(m.getCorps().getPoint(1).getAbscisse(), m.getCorps().getPoint(1).getOrdonnee());
         PointPlan t1 = new PointPlan(m.getToit().getPoint(0).getAbscisse(), m.getToit().getPoint(0).getOrdonnee());
@@ -50,9 +51,9 @@ public class Maison extends Forme{
      * - hauteur du toit : avec la hauteur de la maison on en déduit l'ordonnée du 2e point du toit
      * Les coordonnées de la porte sont déduites par le milieu du corps sauf pour la hauteur qu'on a attribué comme fixe.
      * @throws InvalidOrder
-     * @throws LengthSegmentZero
+     * @throws InvalidDistanceChapeau
      */
-    private void init() throws InvalidOrder, LengthSegmentZero {
+    private void init() throws InvalidOrder, InvalidDistanceChapeau {
         Scanner sc = new Scanner(System.in);
         System.out.println("Entrez la position de la Maison : ");
         int positionMaison = sc.nextInt();
@@ -106,9 +107,9 @@ public class Maison extends Forme{
     /**
      * Modifie la maison en rentrant a nouveau les valeurs hauteur maison, largeur maison etc.
      * @throws InvalidOrder
-     * @throws LengthSegmentZero
+     * @throws InvalidDistanceChapeau
      */
-    public void setMaison() throws InvalidOrder, LengthSegmentZero {
+    public void setMaison() throws InvalidOrder, InvalidDistanceChapeau {
         this.init();
     }
 

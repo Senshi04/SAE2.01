@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+import Exceptions.InvalidDistanceChapeau;
 import ardoise.*;
 
 public class Etoile extends Forme {
@@ -10,7 +11,7 @@ public class Etoile extends Forme {
 		this.pts_etoile = new ArrayList<Chapeau>(4);
 	}
 
-	public Etoile(String arg0, Chapeau chap1) throws InvalidDistanceChapeau{
+	public Etoile(String arg0, Chapeau chap1) throws InvalidDistanceChapeau {
 		super(arg0);
 		// TODO Auto-generated constructor stub
 		this.pts_etoile = new ArrayList<Chapeau>(4);

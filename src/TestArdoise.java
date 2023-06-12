@@ -38,10 +38,12 @@ public class TestArdoise {
 
 
 			 */
-
+/*
             Maison m = new Maison();
             ardoise.ajouterForme(m);
             System.out.println(m);
+
+ */
 			/*
 			PointPlan t5 = new PointPlan(75,160);
 			PointPlan t6 = new PointPlan(125, 200);
@@ -55,7 +57,7 @@ public class TestArdoise {
 			PointPlan t4 = new PointPlan(75, 90);
 			PointPlan t3b = new PointPlan(130, 145);
 			PointPlan t4b = new PointPlan(100, 170);
-			Chapeau c = new Chapeau("Toit", t1,t4,t3);
+
 			Chapeau c2 = new Chapeau("Toit", t3,t3b,t4b);
 			Chapeau c3 = new Chapeau(c);
 			c3.deplacer(0,50);
@@ -89,6 +91,11 @@ public class TestArdoise {
             System.out.println(q);
             ardoise.ajouterForme(q);
             */
+            PointPlan t1 = new PointPlan(50,120);
+            PointPlan t3 = new PointPlan(100, 120);
+            PointPlan t4 = new PointPlan(75, 90);
+            Chapeau c = new Chapeau("Toit", t1,t4,t3);
+            System.out.println(c);
 
             //System.exit(0);
         } catch (Exception e) {

@@ -1,3 +1,4 @@
+import Exceptions.InvalidDistanceChapeau;
 import ardoise.*;
 
 public class TestEtoile {
