@@ -1,6 +1,4 @@
-import Exceptions.InvalidDistanceChapeau;
-import Exceptions.InvalidOrder;
-import Exceptions.LengthSegmentZero;
+import Exceptions.*;
 import ardoise.*;
 
 import java.awt.*;
@@ -64,6 +62,10 @@ public class TestArdoise {
         } catch (InvalidDistanceChapeau e) {
             e.printStackTrace();
         } catch (LengthSegmentZero e) {
+            e.printStackTrace();
+        } catch (InvalidAbs e){
+            e.printStackTrace();
+        } catch (InvalidOrd e){
             e.printStackTrace();
         }
 

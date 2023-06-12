@@ -1,6 +1,5 @@
 import Exceptions.InvalidDistanceChapeau;
 import Exceptions.InvalidOrder;
-import Exceptions.LengthSegmentZero;
 import ardoise.Forme;
 import ardoise.PointPlan;
 import ardoise.Segment;

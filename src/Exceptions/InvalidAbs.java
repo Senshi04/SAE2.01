@@ -1,3 +1,4 @@
+package Exceptions;
 
 public class InvalidAbs extends Exception {
 	/**
@@ -8,7 +9,7 @@ public class InvalidAbs extends Exception {
 		super();
 	}
 	public String toString() {
-		return "L'abscisse du point 1 doit être égale à celle du point 3 et celle du point 2 doit être inférieure";
+		return "L'abscisse du point 1 doit ï¿½tre ï¿½gale ï¿½ celle du point 3 et celle du point 2 doit ï¿½tre infï¿½rieure";
 	}
 	
 }

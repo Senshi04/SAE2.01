@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
+import Exceptions.InvalidAbs;
 import Exceptions.InvalidDistanceChapeau;
+import Exceptions.InvalidOrd;
 import ardoise.*;
 
 public class Etoile extends Forme {
@@ -19,7 +21,7 @@ public class Etoile extends Forme {
 	 * @param chap1 : Chapeau origine qui va servir de mod�le pour les autres et construire une �toile
 	 * @throws InvalidDistanceChapeau : Exception dans le cas o� le chapeau n'est pas isoc�le
 	 */
-	public Etoile(String nom, Chapeau chap1) throws InvalidDistanceChapeau, InvalidAbs, InvalidOrd{
+	public Etoile(String nom, Chapeau chap1) throws InvalidDistanceChapeau, InvalidAbs, InvalidOrd {
 		super(nom);
 		// TODO Auto-generated constructor stub
 		this.pts_etoile = new ArrayList<Chapeau>(4);
@@ -129,7 +131,11 @@ public class Etoile extends Forme {
 	}
 	
 	public String toString() {
-		return "L'�toile est compos�e de 4 chapeaux :\n Chapeau 1 :"+ this.pts_etoile.get(0).toString() + "\n Chapeau 2 :"+ this.pts_etoile.get(1).toString() + "\n Chapeau 3 :" + this.pts_etoile.get(2).toString() + "\n Chapeau 4 :"+ this.pts_etoile.get(3).toString(); 
+		String msg = "Composition de l'étoile:\n";
+		for(int i=0; i< 4; i++){
+			msg+= "Chapeau 1" + i+1 + ":\n" + this.pts_etoile.get(i) +"\n";
+		}
+		return msg;
 	}
 
 }

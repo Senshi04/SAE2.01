@@ -1,3 +1,4 @@
+package Exceptions;
 
 public class InvalidOrd extends Exception {
 
@@ -11,7 +12,7 @@ public class InvalidOrd extends Exception {
 	}
 
 	public String toString() {
-		return "L'ordonnée du point 1 doit être égale à l'ordonnée du point 3.";
+		return "L'ordonnï¿½e du point 1 doit ï¿½tre ï¿½gale ï¿½ l'ordonnï¿½e du point 3.";
 	}
 
 }
