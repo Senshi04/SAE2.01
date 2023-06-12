@@ -15,6 +15,7 @@ public class Quadrilatere extends Forme {
 
     /**
      * prends en paramètre deux point plan puis en déduit deux autres pour faire la quadrilatère
+     *
      * @param nomForme
      * @param p1
      * @param p2
@@ -39,6 +40,7 @@ public class Quadrilatere extends Forme {
 
     /**
      * crée un copie d'un quadrilatere à partir de celui en paramètre
+     *
      * @param q
      */
     Quadrilatere(Quadrilatere q) {
@@ -56,15 +58,16 @@ public class Quadrilatere extends Forme {
 
     /**
      * permet de modifier le premier ou le deuxième point du quadrilatere
+     *
      * @param i
      * @param p
      * @throws InvalidOrder: vérifie que l'emplacement des nouveaux point soit cohérent et recalcul les points qui en dépendent.
      */
     public void setPoint(int i, PointPlan p) throws InvalidOrder {
         if (i == 0 || i == 1) {
-            if (i==0 && (p.getOrdonnee() >= this.points.get(1).getOrdonnee() || p.getAbscisse() >= this.points.get(1).getAbscisse()))
+            if (i == 0 && (p.getOrdonnee() >= this.points.get(1).getOrdonnee() || p.getAbscisse() >= this.points.get(1).getAbscisse()))
                 throw new InvalidOrder(this.points.get(1), p);
-            if (i==1 && (p.getAbscisse() <= this.points.get(0).getAbscisse() || p.getOrdonnee() <= this.points.get(0).getOrdonnee()))
+            if (i == 1 && (p.getAbscisse() <= this.points.get(0).getAbscisse() || p.getOrdonnee() <= this.points.get(0).getOrdonnee()))
                 throw new InvalidOrder(this.points.get(0), p);
             this.points.set(i, p);
             this.points.set(2, new PointPlan(this.points.get(1).getAbscisse(), this.points.get(0).getOrdonnee()));
@@ -74,6 +77,7 @@ public class Quadrilatere extends Forme {
 
     /**
      * return le point d'indexe i
+     *
      * @param i
      * @return
      */
@@ -83,15 +87,8 @@ public class Quadrilatere extends Forme {
     }
 
     /**
-     * affiche les segments du quadrilatere
-     * @return
-     */
-    public String toString() {
-        return this.dessiner().toString();
-    }
-
-    /**
      * retourne les segments du quadrilatere
+     *
      * @return
      */
     public ArrayList<Segment> dessiner() {
@@ -118,6 +115,7 @@ public class Quadrilatere extends Forme {
 
     /**
      * déplace chaque point de x en abscisse et de y en ordonne
+     *
      * @param x
      * @param y
      */
@@ -130,9 +128,24 @@ public class Quadrilatere extends Forme {
 
     /**
      * retourne le la lettre du type de la forme. Ici "Q".
-     * @return
+     *
+     * @return String
      */
     public String typeForme() {
         return "Q";
+    }
+
+    /**
+     * affiche les segments du quadrilatere
+     *
+     * @return String
+     */
+    public String toString() {
+        if (this.points.size() == 0) return "Aucun point du quadrilatere n'existe, sorry";
+        String msg = "";
+        for (int i = 0; i < 4; i++) {
+            msg += "Côté " + (i + 1) + ": " + this.dessiner().get(i) + "\n";
+        }
+        return msg;
     }
 }

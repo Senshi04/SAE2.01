@@ -133,7 +133,7 @@ public class Etoile extends Forme {
 	public String toString() {
 		String msg = "Composition de l'étoile:\n";
 		for(int i=0; i< 4; i++){
-			msg+= "Chapeau 1" + i+1 + ":\n" + this.pts_etoile.get(i) +"\n";
+			msg+= "Chapeau " + (i+1) + ":\n" + this.pts_etoile.get(i) +"\n";
 		}
 		return msg;
 	}

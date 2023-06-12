@@ -48,6 +48,9 @@ public class TestArdoise {
             Chapeau c_etoile = new Chapeau("Etoile", p1_etoile, p2_etoile,p3_etoile);
             Etoile etoile = new Etoile("Etoile", c_etoile);
 
+            System.out.println(m);
+            System.out.println(etoile);
+
             ardoise.ajouterForme(m);
             ardoise.ajouterForme(poto);
             ardoise.ajouterForme(nuage1);
