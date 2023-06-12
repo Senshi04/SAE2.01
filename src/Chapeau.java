@@ -25,13 +25,13 @@ public class Chapeau extends Forme {
 		int f = p3.getOrdonnee();
 
 		if(b==f){
-			if(!(d<b && ((c-a)==(e-c) || (c-e)==(a-c)))) {
+			if(!((c-a)==(e-c) || (c-e)==(a-c))) {
 				System.out.println("d<b && ((c-a)==(e-c))");
 				throw new InvalidDistanceChapeau();
 			}
 		}
 		if(a==e) {
-			if(!(a<c && ((c-e)==(a-e)||(a-c)==(e-c)))) {
+			if(!((c-e)==(a-e)||(a-c)==(e-c))){
 				System.out.println("a<c && ((c-e)==(a-e)||(a-c)==(e-c))");
 				throw new InvalidDistanceChapeau();
 			}

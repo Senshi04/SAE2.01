@@ -20,7 +20,8 @@ public class Maison extends Forme{
      * @throws InvalidOrder : Exception pour les formes Quadrilatères
      * @throws InvalidDistanceChapeau : Exception pour la forme Chapeau
      */
-    public Maison() throws InvalidOrder, InvalidDistanceChapeau {
+    public Maison(String nomForme) throws InvalidOrder, InvalidDistanceChapeau {
+        super(nomForme);
         this.init();
     }
 
@@ -30,6 +31,7 @@ public class Maison extends Forme{
      * @param m
      */
     public Maison(Maison m) throws InvalidOrder, InvalidDistanceChapeau {
+        super(m.getNomForme());
         PointPlan c1 = new PointPlan(m.getCorps().getPoint(0).getAbscisse(), m.getCorps().getPoint(0).getOrdonnee());
         PointPlan c2 = new PointPlan(m.getCorps().getPoint(1).getAbscisse(), m.getCorps().getPoint(1).getOrdonnee());
         PointPlan t1 = new PointPlan(m.getToit().getPoint(0).getAbscisse(), m.getToit().getPoint(0).getOrdonnee());
@@ -143,7 +145,7 @@ public class Maison extends Forme{
      * @return String
      */
     public String typeForme() {
-        return "CF";
+        return "GF";
     }
 
     public String toString(){
