@@ -53,8 +53,6 @@ public class TestException {
             Etoile etoile = new Etoile("Test Etoile",chap1);
         } catch (InvalidOrd e){
             System.out.println(e);
-        } catch (InvalidAbs e){
-            System.out.println(e);
         } catch (InvalidDistanceChapeau e){
             e.printStackTrace();
         }
