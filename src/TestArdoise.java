@@ -60,6 +60,21 @@ public class TestArdoise {
             ardoise.ajouterForme(oiseau3);
             ardoise.ajouterForme(etoile);
             ardoise.dessinerGraphique();
+
+            //Déplacement des oiseaux après 500ms
+            for(int i=0; i<4; i++){
+                Thread.sleep(500);
+                oiseau1.deplacer(10,20);
+                oiseau2.deplacer(10,20);
+                oiseau3.deplacer(10,20);
+                ardoise.ajouterForme(oiseau1);
+                ardoise.ajouterForme(oiseau2);
+                ardoise.ajouterForme(oiseau3);
+                ardoise.dessinerGraphique();
+            }
+            Thread.sleep(5000);
+            System.exit(0);
+
         } catch (InvalidOrder e) {
             e.printStackTrace();
         } catch (InvalidDistanceChapeau e) {
@@ -68,6 +83,8 @@ public class TestArdoise {
             e.printStackTrace();
         } catch (InvalidOrd e){
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
 
     }
