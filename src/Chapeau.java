@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-import Exceptions.InvalidDistanceChapeau;
 import ardoise.Forme;
 import ardoise.PointPlan;
 import ardoise.Segment;
@@ -13,7 +12,7 @@ public class Chapeau extends Forme {
 	}
 	
 
-	public Chapeau(String arg0,PointPlan p1, PointPlan p2, PointPlan p3) throws InvalidDistanceChapeau {
+	public Chapeau(String arg0,PointPlan p1, PointPlan p2, PointPlan p3) throws  InvalidDistanceChapeau {
 		super(arg0);
 		// TODO Auto-generated constructor stub
 
@@ -87,12 +86,7 @@ public class Chapeau extends Forme {
 	}
 	
 	public String toString() {
-		if (this.points.size() == 0) return "Aucun point du chapeau n'existe, sorry";
-		String msg = "";
-		for (int i = 0; i < 2; i++) {
-			msg += "Côté " + (i + 1) + ": " + this.dessiner().get(i) + "\n";
-		}
-		return msg;
+		return "Le chapeau est compos� 3 points :\nPoint 1 :"+ this.points.get(0) + "\nPoint 2 :" + this.points.get(1) + "\nPoint 3:" + this.points.get(2);
 	}
 
 }
