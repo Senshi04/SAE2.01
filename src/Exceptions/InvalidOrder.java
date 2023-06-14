@@ -13,7 +13,7 @@ public class InvalidOrder extends Exception {
     
 
     public String toString(){
-        return this.p1 + " et " + this.p2 + "ne sont pas dans le bon ordre";
+        return this.p1 + " et " + this.p2 + " ne sont pas dans le bon ordre";
     }
 
 

@@ -26,8 +26,8 @@ public class Chapeau extends Forme {
 		
 		if(b==f){
 			if(!((c-a)==(e-c) || (c-e)==(a-c))){
-				System.out.println("c-a == e-c ="+ ((c-a)==(e-c)));
-				System.out.println("c-e == a-c ="+ ((c-e)==(a-c)));
+				System.out.println("(abs p2 - abs p1 == abs p3 - abd p2) = "+ ((c-a)==(e-c)));
+				System.out.println("(abs p2 - abs p3 == abs p1 - abs p2) = "+ ((c-e)==(a-c)));
 				throw new InvalidDistanceChapeau();
 			}
 		}
