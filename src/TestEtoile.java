@@ -1,4 +1,3 @@
-import Exceptions.InvalidAbs;
 import Exceptions.InvalidDistanceChapeau;
 import Exceptions.InvalidOrd;
 import ardoise.*;
