@@ -1,11 +1,14 @@
 import java.util.ArrayList;
 
+import Exceptions.InvalidAbs;
+import Exceptions.InvalidDistanceChapeau;
+import Exceptions.InvalidOrd;
 import ardoise.*;
 
 public class Etoile extends Forme {
 	private ArrayList<Chapeau> pts_etoile;
 	/**
-	 *  Constructeur par défaut de la classe Etoile, initialise une ArrayList de Chapeau de taille 4
+	 *  Constructeur par dï¿½faut de la classe Etoile, initialise une ArrayList de Chapeau de taille 4
 	 */
 	public Etoile() {
 		// TODO Auto-generated constructor stub
@@ -14,11 +17,11 @@ public class Etoile extends Forme {
 
 	/**
 	 * 
-	 * @param nom : Nom de l'étoile
-	 * @param chap1 : Chapeau origine qui va servir de modèle pour les autres et construire une étoile
-	 * @throws InvalidDistanceChapeau : Exception dans le cas où le chapeau n'est pas isocèle
+	 * @param nom : Nom de l'ï¿½toile
+	 * @param chap1 : Chapeau origine qui va servir de modï¿½le pour les autres et construire une ï¿½toile
+	 * @throws InvalidDistanceChapeau : Exception dans le cas oï¿½ le chapeau n'est pas isocï¿½le
 	 */
-	public Etoile(String nom, Chapeau chap1) throws InvalidDistanceChapeau, InvalidAbs, InvalidOrd{
+	public Etoile(String nom, Chapeau chap1) throws InvalidDistanceChapeau, InvalidAbs, InvalidOrd {
 		super(nom);
 		// TODO Auto-generated constructor stub
 		this.pts_etoile = new ArrayList<Chapeau>(4);
@@ -32,9 +35,9 @@ public class Etoile extends Forme {
 		int f = ch.getPoint(2).getOrdonnee();
 		
 		if(!(d<b)) {
-			System.out.println("Ordonnée b = "+ b);
-			System.out.println("Ordonnée d = "+ d);
-			System.out.println("Ordonnée f = "+ f);
+			System.out.println("Ordonnï¿½e b = "+ b);
+			System.out.println("Ordonnï¿½e d = "+ d);
+			System.out.println("Ordonnï¿½e f = "+ f);
 			throw new InvalidOrd();
 		}
 		if(!(a<c)) {
@@ -75,15 +78,15 @@ public class Etoile extends Forme {
 	}
 	/**
 	 * 
-	 * @param index : Choix du chapeau composant l'étoile
-	 * @return Le chapeau demandé
+	 * @param index : Choix du chapeau composant l'ï¿½toile
+	 * @return Le chapeau demandï¿½
 	 */
 	public Chapeau getChapeau(int index) {
 		return this.pts_etoile.get(index);
 	}
 	/**
 	 * 
-	 * @param index : Choix du chapeau à modifier
+	 * @param index : Choix du chapeau ï¿½ modifier
 	 * @param c : Nouvelle valeur du chapeau
 	 */
 	public void setChapeau(int index, Chapeau c) {
@@ -91,7 +94,7 @@ public class Etoile extends Forme {
 	}
 	
 	/**
-	 * Déplace l'étoile à l'endroit souhaité
+	 * Dï¿½place l'ï¿½toile ï¿½ l'endroit souhaitï¿½
 	 */
 	@Override
 	public void deplacer(int arg0, int arg1) {
@@ -104,7 +107,7 @@ public class Etoile extends Forme {
 	}
 
 	/**
-	 * Ajoute les segments pour dessiner l'étoile
+	 * Ajoute les segments pour dessiner l'ï¿½toile
 	 */
 	@Override
 	public ArrayList<Segment> dessiner() {
@@ -128,7 +131,7 @@ public class Etoile extends Forme {
 	}
 	
 	public String toString() {
-		return "L'étoile est composée de 4 chapeaux :\n Chapeau 1 :"+ this.pts_etoile.get(0).toString() + "\n Chapeau 2 :"+ this.pts_etoile.get(1).toString() + "\n Chapeau 3 :" + this.pts_etoile.get(2).toString() + "\n Chapeau 4 :"+ this.pts_etoile.get(3).toString(); 
+		return "L'ï¿½toile est composï¿½e de 4 chapeaux :\n Chapeau 1 :"+ this.pts_etoile.get(0).toString() + "\n Chapeau 2 :"+ this.pts_etoile.get(1).toString() + "\n Chapeau 3 :" + this.pts_etoile.get(2).toString() + "\n Chapeau 4 :"+ this.pts_etoile.get(3).toString(); 
 	}
 
 }
