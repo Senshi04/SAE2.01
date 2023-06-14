@@ -1,16 +1,18 @@
 package Exceptions;
 
 import ardoise.PointPlan;
+import ardoise.Segment;
 
+/**
+ * Classe qui renvoie la phrase d'erreur si les coordonnées d'au moins deux points sont égaux
+ */
 public class LengthSegmentZero extends Exception {
-    PointPlan point;
-    public LengthSegmentZero(PointPlan point){
+    public LengthSegmentZero(){
         super();
-        this.point = point;
     }
 
     public String toString(){
-        return "Les points : " + this.point + " forment un segment de longueur 0";
+        return "Un ou plusieurs points sont égaux";
     }
 
 

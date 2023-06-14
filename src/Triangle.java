@@ -1,5 +1,4 @@
 import Exceptions.LengthSegmentZero;
-import Exceptions.SegmentGreaterThanSumOfOther;
 import ardoise.Forme;
 import ardoise.PointPlan;
 import ardoise.Segment;
@@ -10,67 +9,129 @@ import java.util.List;
 public class Triangle extends Forme {
     private ArrayList<PointPlan> points;
 
-    public Triangle(){
+    /**
+     * Constructeur par défaut qui initialise la collection points
+     */
+    public Triangle() {
         new ArrayList<PointPlan>(3);
     }
-    public Triangle(PointPlan p1, PointPlan p2, PointPlan p3) throws IndexOutOfBoundsException, LengthSegmentZero{
+
+    /**
+     * Constructeur champ à champ
+     * @param nomForme
+     * @param p1
+     * @param p2
+     * @param p3
+     * @throws LengthSegmentZero : verifie que les coordonnées des Points sont toutes différentes
+     */
+    public Triangle(String nomForme, PointPlan p1, PointPlan p2, PointPlan p3) throws LengthSegmentZero {
+        super(nomForme);
+        if ((p1.getAbscisse() == p2.getAbscisse() && p1.getOrdonnee() == p2.getOrdonnee())
+                || (p1.getAbscisse() == p3.getAbscisse() && p1.getOrdonnee() == p3.getOrdonnee())
+                || (p2.getAbscisse() == p3.getAbscisse() && p2.getOrdonnee() == p3.getOrdonnee()))
+            throw new LengthSegmentZero();
         this.points = new ArrayList<PointPlan>(3);
-        this.setPoint(0, p1);
-        this.setPoint(1, p2);
-        this.setPoint(2, p3);
-    }
-    public Triangle(Triangle t) throws IndexOutOfBoundsException, LengthSegmentZero{
-        this.points = new ArrayList<PointPlan>(3);
-        this.setPoint(0, t.getPoint(0));
-        this.setPoint(1, t.getPoint(0));
-        this.setPoint(2, t.getPoint(0));
+        this.points.add(p1);
+        this.points.add(p2);
+        this.points.add(p3);
     }
 
-    public PointPlan getPoint(int index) throws IndexOutOfBoundsException{
-        if(index > this.points.size() || index < this.points.size()) throw new IndexOutOfBoundsException();
+    /**
+     * Constructeur par copie
+     * Création de 3 PointPlan en donnant la valeur des abscisses et ordonnées des 3 du Triangle t
+     * @param t
+     */
+    public Triangle(Triangle t) {
+        super(t.getNomForme());
+        this.points = new ArrayList<PointPlan>(3);
+        PointPlan p1 = new PointPlan(t.getPoint(0).getAbscisse(), t.getPoint(0).getOrdonnee());
+        PointPlan p2 = new PointPlan(t.getPoint(1).getAbscisse(), t.getPoint(1).getOrdonnee());
+        PointPlan p3 = new PointPlan(t.getPoint(2).getAbscisse(), t.getPoint(2).getOrdonnee());
+        this.points.add(p1);
+        this.points.add(p2);
+        this.points.add(p3);
+    }
+
+    /**
+     * Retourne le PointPlan se trouvant à l'indice index
+     * @param index
+     * @return
+     */
+    public PointPlan getPoint(int index) {
         return this.points.get(index);
     }
-    public void setPoint(int index, PointPlan p) throws IndexOutOfBoundsException, LengthSegmentZero {
-        if(index > this.points.size() || index < this.points.size()) throw new IndexOutOfBoundsException();
-        if(p.getAbscisse() == p.getOrdonnee()) throw new LengthSegmentZero(p);
 
-        this.points.set(index, p) ;
+    /**
+     * Modifie le PointPlan de d'indice index par le PointPlan p
+     * @param index
+     * @param p
+     * @throws LengthSegmentZero : entre dans la condition où index == n (avec n = 0, 1 ou 2) et vérifie que les coordonnées de p != coordonnées d'un autre PointPlan
+     */
+    public void setPoint(int index, PointPlan p) throws LengthSegmentZero {
+        PointPlan p0 = this.getPoint(0);
+        PointPlan p1 = this.getPoint(1);
+        PointPlan p2 = this.getPoint(2);
+
+        if ((index == 0) && (
+                (p.getAbscisse() == p1.getAbscisse() && p.getOrdonnee() == p1.getOrdonnee())
+                        || (p.getAbscisse() == p2.getAbscisse() && p.getOrdonnee() == p2.getOrdonnee())
+        )) throw new LengthSegmentZero();
+        if ((index == 1) && (
+                (p.getAbscisse() == p0.getAbscisse() && p.getOrdonnee() == p0.getOrdonnee())
+                        || (p.getAbscisse() == p2.getAbscisse() && p.getOrdonnee() == p2.getOrdonnee())
+        )) throw new LengthSegmentZero();
+        if ((index == 2) && (
+                (p.getAbscisse() == p0.getAbscisse() && p.getOrdonnee() == p0.getOrdonnee())
+                        || (p.getAbscisse() == p1.getAbscisse() && p.getOrdonnee() == p1.getOrdonnee())
+        )) throw new LengthSegmentZero();
+
+        this.points.set(index, p);
     }
 
-    public void SegmentsValides(Segment segment1, Segment segment2, Segment segment3) throws SegmentGreaterThanSumOfOther{
-        // Calculs intermédiaires
-        double coteA1 = segment1.getPointDepart().getAbscisse()-segment1.getPointArrivee().getAbscisse();
-        double coteB1 = segment1.getPointDepart().getOrdonnee()-segment1.getPointArrivee().getOrdonnee();
-        double coteA2 = segment2.getPointDepart().getAbscisse()-segment2.getPointArrivee().getAbscisse();
-        double coteB2 = segment2.getPointDepart().getOrdonnee()-segment2.getPointArrivee().getOrdonnee();
-        double coteA3 = segment3.getPointDepart().getAbscisse()-segment3.getPointArrivee().getAbscisse();
-        double coteB3 = segment3.getPointDepart().getOrdonnee()-segment3.getPointArrivee().getOrdonnee();
-        // Calculs des côtés avec la formule de Pythagore : AB²+ AC² = BC²
-        double length1 = Math.sqrt(Math.pow(coteA1,2) + Math.pow(coteB1,2));
-        double length2 = Math.sqrt(Math.pow(coteA2,2) + Math.pow(coteB2,2));
-        double length3 = Math.sqrt(Math.pow(coteA3,2) + Math.pow(coteB3,2));
-
-        if(length1 > length2+length3 || length2 > length1+length3 || length3 > length1 + length2) throw new SegmentGreaterThanSumOfOther();
-    }
+    /**
+     * Retoure une collection de segments pour dessiner le triangle
+     * @return ArrayList<Segment>
+     */
     public ArrayList<ardoise.Segment> dessiner() {
+        if (this.points.size() == 0) return null;
         Segment segment1 = new Segment(this.getPoint(0), this.getPoint(1));
         Segment segment2 = new Segment(this.getPoint(1), this.getPoint(2));
         Segment segment3 = new Segment(this.getPoint(2), this.getPoint(0));
+        return new ArrayList<Segment>(List.of(segment1, segment2, segment3));
+    }
 
-        try {
-            this.SegmentsValides(segment1,segment2,segment3);
-        } catch (SegmentGreaterThanSumOfOther e) {
-            System.out.println(e);
-        }
-        return new ArrayList<Segment>(List.of(segment1, segment2,segment3));
+    /**
+     * Deplace chaque PointPlan
+     * @param x
+     * @param y
+     */
+    public void deplacer(int x, int y) {
+        this.points.get(0).deplacer(x, y);
+        this.points.get(1).deplacer(x, y);
+        this.points.get(2).deplacer(x, y);
     }
-    public void deplacer(int x, int y){
-        this.points.get(0).deplacer(x,y);
-        this.points.get(1).deplacer(x,y);
-        this.points.get(2).deplacer(x,y);
-    }
-    public String typeForme(){
+
+    /**
+     * Renvoie le type de la forme: T
+     * @return String
+     */
+    public String typeForme() {
         return "T";
     }
+
+    /**
+     * Décrit le triangle en renvoyant les coordonnées de ses Points
+     * S'il n'existe pas de Triangle elle revoie une phrase adéquate à la situation
+     * @return String
+     */
+    public String toString() {
+        if (this.points.size() == 0) return "Aucun point du triangle n'existe, sorry";
+        String msg = "";
+        for (int i = 0; i < 3; i++) {
+            msg += "Côté " + (i + 1) + ": " + this.dessiner().get(i) + "\n";
+        }
+        return msg;
+    }
 }
+
 
