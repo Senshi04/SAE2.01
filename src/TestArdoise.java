@@ -66,8 +66,6 @@ public class TestArdoise {
             e.printStackTrace();
         } catch (LengthSegmentZero e) {
             e.printStackTrace();
-        } catch (InvalidAbs e){
-            e.printStackTrace();
         } catch (InvalidOrd e){
             e.printStackTrace();
         }

@@ -32,7 +32,7 @@ public class Etoile extends Forme {
 		int e = ch.getPoint(2).getAbscisse();
 		int f = ch.getPoint(2).getOrdonnee();
 		
-		if(!((d<b) && (d==b))) {
+		if(!((d<b) && (f==b))) {
 			System.out.println("Ordonnee du point 1 = "+ b);
 			System.out.println("Ordonnee du point 2 = "+ d);
 			System.out.println("Ordonnee du point 3 = "+ f);

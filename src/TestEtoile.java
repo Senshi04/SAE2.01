@@ -19,8 +19,6 @@ public class TestEtoile {
 			ardoise.ajouterForme(etoile);
 		} catch (InvalidOrd e){
 			e.printStackTrace();
-		} catch (InvalidAbs e){
-			e.printStackTrace();
 		} catch (InvalidDistanceChapeau e){
 			e.printStackTrace();
 		}
