@@ -34,10 +34,10 @@ public class Etoile extends Forme {
 		int e = ch.getPoint(2).getAbscisse();
 		int f = ch.getPoint(2).getOrdonnee();
 		
-		if(!(d<b)) {
-			System.out.println("Ordonn�e b = "+ b);
-			System.out.println("Ordonn�e d = "+ d);
-			System.out.println("Ordonn�e f = "+ f);
+		if(!((d<b) && (d==b)) {
+			System.out.println("Ordonnee b = "+ b);
+			System.out.println("Ordonnee d = "+ d);
+			System.out.println("Ordonnee f = "+ f);
 			throw new InvalidOrd();
 		}
 		if(!(a<c)) {
@@ -131,7 +131,11 @@ public class Etoile extends Forme {
 	}
 	
 	public String toString() {
-		return "L'�toile est compos�e de 4 chapeaux :\n Chapeau 1 :"+ this.pts_etoile.get(0).toString() + "\n Chapeau 2 :"+ this.pts_etoile.get(1).toString() + "\n Chapeau 3 :" + this.pts_etoile.get(2).toString() + "\n Chapeau 4 :"+ this.pts_etoile.get(3).toString(); 
+		String msg = "Composition de l'étoile:\n";
+		for(int i=0; i< 4; i++){
+			msg+= "Chapeau " + (i+1) + ":\n" + this.pts_etoile.get(i) +"\n";
+		}
+		return msg;
 	}
 
 }
