@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-
-import Exceptions.InvalidAbs;
 import Exceptions.InvalidDistanceChapeau;
 import Exceptions.InvalidOrd;
 import ardoise.*;
@@ -21,7 +19,7 @@ public class Etoile extends Forme {
 	 * @param chap1 : Chapeau origine qui va servir de mod�le pour les autres et construire une �toile
 	 * @throws InvalidDistanceChapeau : Exception dans le cas o� le chapeau n'est pas isoc�le
 	 */
-	public Etoile(String nom, Chapeau chap1) throws InvalidDistanceChapeau, InvalidAbs, InvalidOrd {
+	public Etoile(String nom, Chapeau chap1) throws InvalidDistanceChapeau, InvalidOrd {
 		super(nom);
 		// TODO Auto-generated constructor stub
 		this.pts_etoile = new ArrayList<Chapeau>(4);
@@ -34,18 +32,13 @@ public class Etoile extends Forme {
 		int e = ch.getPoint(2).getAbscisse();
 		int f = ch.getPoint(2).getOrdonnee();
 		
-		if(!((d<b) && (d==b)) {
-			System.out.println("Ordonnee b = "+ b);
-			System.out.println("Ordonnee d = "+ d);
-			System.out.println("Ordonnee f = "+ f);
+		if(!((d<b) && (d==b))) {
+			System.out.println("Ordonnee du point 1 = "+ b);
+			System.out.println("Ordonnee du point 2 = "+ d);
+			System.out.println("Ordonnee du point 3 = "+ f);
 			throw new InvalidOrd();
 		}
-		if(!(a<c)) {
-			System.out.println("Abscisse a = "+ a);
-			System.out.println("Abscisse c = "+ c);
-			System.out.println("Abscisse e = "+ e);
-			throw new InvalidAbs();
-		}
+
 		PointPlan pLeft = new PointPlan(e,f);
 		PointPlan pTop = new PointPlan(e+(f-d),f+(e-c));
 		PointPlan pRight = new PointPlan(e,f+(e-a));
